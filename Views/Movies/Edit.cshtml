@@ -1,0 +1,71 @@
+﻿@model Fall2025_Project3_pslumpkins.Models.Movie
+
+@{
+    ViewData["Title"] = "Edit Movie";
+}
+
+<h1>Edit Movie</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="MovieImdb" class="form-label">IMDB URL</label>
+                <input asp-for="MovieImdb" class="form-control" />
+                <span asp-validation-for="MovieImdb" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Genre" class="form-label"></label>
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Year" class="form-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2" id="posterPreview">
+                @if (Model.Poster != null && Model.Poster.Length > 0)
+                {
+                    var b64 = Convert.ToBase64String(Model.Poster);
+                    <img src="data:image/jpeg;base64,@b64"
+                         alt="Current Poster"
+                         class="img-fluid rounded"
+                         style="max-height:200px;" />
+                }
+                else
+                {
+                    <span class="text-muted">No poster uploaded.</span>
+                }
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="form-label">Upload New Poster</label>
+                <input type="file" name="posterFile" id="posterFile" class="form-control" accept="image/*" />
+                <div class="form-text">Selecting a new file will replace the existing poster.</div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" class="btn btn-link">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

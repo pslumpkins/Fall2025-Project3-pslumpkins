@@ -1,8 +1,29 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center my-5">
+    <h1 class="display-4 fw-bold">Movie & Actor Explorer</h1>
+
+    <hr class="my-4" />
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a asp-controller="Movies" asp-action="Index" class="btn btn-primary btn-lg shadow-sm">
+            Browse Movies
+        </a>
+        <a asp-controller="Actors" asp-action="Index" class="btn btn-success btn-lg shadow-sm">
+            Browse Actors
+        </a>
+        <a asp-controller="ActorMovies" asp-action="Index" class="btn btn-secondary btn-lg shadow-sm">
+            Relationships
+        </a>
+    </div>
+
+    <section class="mt-5 text-start container">
+        <h2 class="fw-semibold mb-3">About This Project</h2>
+        <p>
+            This web application was built as part of <strong>Fall 2025 Project 3</strong> 
+
+        </p>
+    </section>
 </div>

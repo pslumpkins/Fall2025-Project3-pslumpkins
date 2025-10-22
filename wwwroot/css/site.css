@@ -1,31 +1,291 @@
-html {
-  font-size: 14px;
+
+:root {
+    --bg: #f6f8fa;
+    --card: #ffffff;
+    --text: #24292f;
+    --muted: #57606a;
+    --link: #0969da;
+    --border: #d0d7de;
+    --focus: rgba(9,105,218,.25);
+    --table-head: #f6f8fa;
+    --row-alt: #f9fafb;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0d1117;
+        --card: #161b22;
+        --text: #c9d1d9;
+        --muted: #8b949e;
+        --link: #58a6ff;
+        --border: #30363d;
+        --focus: rgba(56,139,253,.35);
+        --table-head: #0d1117;
+        --row-alt: #0f141b;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+html, body {
+    height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+a {
+    color: var(--link);
+    text-decoration: none;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    a:hover {
+        text-decoration: underline;
+    }
+
+h1, h2, h3, h4 {
+    margin: .25rem 0 .75rem;
+    font-weight: 600;
 }
+
+.lead, .muted {
+    color: var(--muted);
+}
+
+.container, .container-fluid {
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+.section, .card, .table-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+label, .form-label {
+    font-weight: 600;
+    margin-bottom: .35rem;
+}
+
+input[type="text"], input[type="number"], input[type="url"],
+input[type="email"], input[type="file"], select, textarea,
+.form-control, .form-select {
+    width: 100%;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: .5rem .625rem;
+}
+
+    input:focus, select:focus, textarea:focus,
+    .form-control:focus, .form-select:focus {
+        outline: 2px solid var(--focus);
+        outline-offset: 1px;
+    }
+
+.text-danger, .validation-summary-errors li, .field-validation-error {
+    color: #d1242f !important;
+    font-weight: 500;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.btn, .btn-primary, .btn-secondary {
+    display: inline-block;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: .45rem .85rem;
+    background: var(--card);
+    color: var(--text);
+}
+
+    .btn:hover {
+        filter: brightness(0.98);
+    }
+
+.btn-primary {
+    background: var(--link);
+    color: #fff;
+    border-color: var(--link);
+}
+
+    .btn-primary:hover {
+        filter: brightness(0.93);
+    }
+
+.btn-link {
+    background: transparent;
+    border: 0;
+    color: var(--link);
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+th, td {
+    padding: .625rem .75rem;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background: var(--table-head);
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+}
+
+tbody tr:nth-child(odd) td {
+    background: var(--row-alt);
+}
+
+.ai-table {
+    table-layout: fixed;
+}
+
+.ai-review, .ai-tweet {
+    white-space: pre-wrap;
+    margin: 0 0 .5rem 0;
+}
+.badge-sentiment {
+    display: inline-block;
+    padding: .2rem .45rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 600;
+    background: var(--card);
+}
+
+.sent-pos {
+    color: #1a7f37;
+}
+
+.sent-neg {
+    color: #d1242f;
+}
+
+.poster, .headshot, .img-thumb {
+    display: block;
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+
+.navbar, footer {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: .5rem 0;
+}
+
+
+table tbody tr td {
+    background-color: var(--card) !important; 
+}
+
+
+table {
+    background-color: #161b22; 
+}
+
+td:nth-child(3),
+td:nth-child(4) {
+    color: #ffffff !important;
+}
+
+
+td, th {
+    color: var(--text);
+}
+
+
+thead th {
+    background-color: #1a1f29;
+    color: #fff;
+}
+
+
+.btn {
+    background-color: #21262d;
+    border-color: #30363d;
+    color: #c9d1d9;
+}
+
+    .btn:hover {
+        background-color: #2b3139;
+    }
+
+
+
+:root {
+    --text: #ffffff;
+    --muted: rgba(255,255,255,.72); /* for subtle/secondary text */
+}
+
+.text-muted {
+    color: var(--muted) !important;
+}
+
+.text-dark, .badge.text-dark {
+    color: #ffffff !important;
+}
+
+::placeholder {
+    color: rgba(255,255,255,.6);
+}
+
+
+td, th, label, .form-label, .form-control, .form-select, .btn, .navbar, footer {
+    color: var(--text);
+}
+
+/* === AI Review / Tweets readability + white text === */
+.ai-table,
+.ai-table table,
+.ai-review,
+.ai-tweet {
+  color: #fff !important;        /* all text white */
+  background-color: #161b22;     /* same dark background as tables */
+  border-color: var(--border);
+}
+
+.ai-table th, .ai-table td {
+  color: #fff !important;
+  background-color: #161b22 !important;
+}
+
+/* optional: hover for rows to make them pop slightly */
+.ai-table tbody tr:hover td {
+  background-color: #1e2630 !important;
+}
+
+/* badges for Vader sentiment */
+.badge {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.bg-success { background-color: #198754 !important; }
+.bg-warning { background-color: #f1c232 !important; color: #000 !important; }
+.bg-danger  { background-color: #dc3545 !important; }

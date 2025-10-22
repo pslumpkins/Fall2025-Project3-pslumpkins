@@ -1,0 +1,46 @@
+﻿@model Fall2025_Project3_pslumpkins.Models.ActorMovie
+
+@{
+    ViewData["Title"] = "Actor-Movie Details";
+}
+
+<h1>Actor-Movie Details</h1>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">Actor</dt>
+    <dd class="col-sm-9">
+        @Model.Actor?.Name
+        @if (!string.IsNullOrWhiteSpace(Model.Actor?.ActorImdb))
+        {
+            <span> — <a href="@Model.Actor.ActorImdb" target="_blank" rel="noopener">IMDB</a></span>
+        }
+    </dd>
+
+    <dt class="col-sm-3">Movie</dt>
+    <dd class="col-sm-9">
+        @Model.Movie?.Title
+        @if (!string.IsNullOrWhiteSpace(Model.Movie?.MovieImdb))
+        {
+            <span> — <a href="@Model.Movie.MovieImdb" target="_blank" rel="noopener">IMDB</a></span>
+        }
+    </dd>
+</dl>
+
+<div class="mt-3">
+    <a class="btn btn-primary"
+       asp-action="Edit"
+       asp-route-actorId="@Model.ActorId"
+       asp-route-movieId="@Model.MovieId">
+        Edit
+    </a>
+
+    <a class="btn btn-outline-danger"
+       asp-action="Delete"
+       asp-route-actorId="@Model.ActorId"
+       asp-route-movieId="@Model.MovieId">
+        Delete
+    </a>
+
+    <a class="btn btn-link" asp-action="Index">Back to List</a>
+</div>

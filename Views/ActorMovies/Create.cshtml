@@ -1,0 +1,40 @@
+﻿@model Fall2025_Project3_pslumpkins.Models.ActorMovie
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Actor–Movie Relationship</h1>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <!-- Show model + field errors -->
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="ActorId" class="form-label">Actor</label>
+                <select asp-for="ActorId" asp-items="ViewBag.ActorId" class="form-select">
+                    <option value="">-- Select an actor --</option>
+                </select>
+                <span asp-validation-for="ActorId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MovieId" class="form-label">Movie</label>
+                <select asp-for="MovieId" asp-items="ViewBag.MovieId" class="form-select">
+                    <option value="">-- Select a movie --</option>
+                </select>
+                <span asp-validation-for="MovieId" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="Index" class="btn btn-link">Back to List</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,47 @@
+﻿@model Fall2025_Project3_pslumpkins.Models.ActorMovie
+
+@{
+    ViewData["Title"] = "Edit Actor-Movie Relationship";
+}
+
+<h1>Edit Actor-Movie Relationship</h1>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- hidden keys-->
+            <input type="hidden" name="originalActorId" value="@Model.ActorId" />
+            <input type="hidden" name="originalMovieId" value="@Model.MovieId" />
+
+            <input type="hidden" asp-for="ActorId"/>
+            <input type="hidden" asp-for="MovieId"/>
+
+            <div class="mb-3">
+                <label asp-for="ActorId" class="form-label">Actor</label>
+                <select asp-for="ActorId" asp-items="ViewBag.ActorId" class="form-select" disabled></select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MovieId" class="form-label">Movie</label>
+                <select asp-for="MovieId" asp-items="ViewBag.MovieId" class="form-select" disabled></select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" class="btn btn-link">Back to List</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Fall2025_Project3_pslumpkins.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h1>Movies</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">+ Create New</a>
+</p>
+<table class="table table-striped align-middle">
+    <thead>
+       <tr>
+            <th style="width:90px;">Poster</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Year</th>
+            <th>IMDB</th>
+            <th style="width:200px;"></th>
+       </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           <td>
+               @if (item.Poster != null && item.Poster.Length > 0)
+                    {
+                        var b64 = Convert.ToBase64String(item.Poster);
+                        <img src="data:image/jpeg;base64,@b64"
+                             alt="Poster"
+                        style="height:80px;width:auto;border-radius:6px;object-fit:cover"/>
+                    }
+                    else
+                    {
+                        <span class="text-muted">-</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+                </td>
+                <td>@item.Genre</td>
+                <td>@item.Year</td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(item.MovieImdb))
+                    {
+                        <a href="@item.MovieImdb" target="_blank" rel="noopener noreferrer">IMDB</a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">-</span>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id"> Edit</a>
+                    <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

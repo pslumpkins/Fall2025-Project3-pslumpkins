@@ -1,0 +1,28 @@
+﻿@model Fall2025_Project3_pslumpkins.Models.ActorMovie
+
+@{
+    ViewData["Title"] = "Delete Actor-Movie";
+}
+
+<h1>Delete Relationships</h1>
+<hr />
+
+<p class="text-danger">Are you sure you want to delete this relationship?</p>
+
+<dl class="row">
+    <dt class="col-sm-3">Actor</dt>
+    <dd class="col-sm-9">@Model.Actor?.Name</dd>
+
+    <dt class="col-sm-3">Movie</dt>
+    <dd class="col-sm-9">@Model.Movie?.Title</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
+    <!-- Both keys must be posted back -->
+    <input type="hidden" name="actorId" value="@Model.ActorId" />
+    <input type="hidden" name="movieId" value="@Model.MovieId" />
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-link">Cancel</a>
+</form>
